@@ -11,13 +11,8 @@ register = template.Library()
 @register.filter(is_safe=True)
 @stringfilter
 def custom_markdown(value):
-    '''
-    extensions = ['markdown.extensions.fenced_code',
-                  'markdown.extensions.codehilite']
-    return mark_safe(markdown.markdown(force_unicode(value), extensions,
-                    safe_mode=True, enable_attributes=False))
-    '''
     return mark_safe(markdown2.markdown(force_unicode(value),
                                         extras=['code-friendly',
-                                        'fenced-code-blocks'])
+                                        'fenced-code-blocks']
                                         )
+                    )
