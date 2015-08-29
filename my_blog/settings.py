@@ -24,8 +24,8 @@ ON_SERVER = 'SERVER_SOFTWARE' in os.environ
 SECRET_KEY = '%vah5ko*77bqju#)+7$r%x+6%wo*edfyqtrr341=40x-&t&ok&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not ON_SERVER 
-
+#DEBUG = not ON_SERVER 
+DEBUG = True
 ALLOWED_HOSTS = ['bi4swo.sinaapp.com'] if ON_SERVER else ['*']
 
 
