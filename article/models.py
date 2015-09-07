@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Article(models.Model) :
     title = models.CharField(max_length=100)
-    category = models.CharField(max_length=50, blank=True)
+    category = models.CharField(max_length=50, default=u'Uncategorized')
     content = models.TextField(blank=True, null=True)
     date_time = models.DateTimeField(auto_now_add=True)
     last_updated_in = models.DateTimeField(auto_now=True)
