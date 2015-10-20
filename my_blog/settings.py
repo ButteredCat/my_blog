@@ -26,7 +26,7 @@ SECRET_KEY = '%vah5ko*77bqju#)+7$r%x+6%wo*edfyqtrr341=40x-&t&ok&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not ON_SERVER 
 #DEBUG = True
-ALLOWED_HOSTS = ['bi4swo.sinaapp.com'] if ON_SERVER else ['*']
+ALLOWED_HOSTS = ['www.butteredcat.org'] if ON_SERVER else ['*']
 
 
 # Application definition
