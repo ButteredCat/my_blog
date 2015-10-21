@@ -7,7 +7,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'article.views.home', name = 'home'),
-    url(r'^(?P<id>\d+)/$', 'article.views.detail', name='detail'),
+    url(r'^article/(?P<id>\d+)/$', 'article.views.detail', name='detail'),
     url(r'^archives/$', 'article.views.archives', name = 'archives'),
     url(r'^about/$', 'article.views.about', name = 'about'),
     url(r'^tag(?P<tag>\w+)/$', 'article.views.search_tag', name = 'search_tag'),
