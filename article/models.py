@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 # Create your models here.
-class Article(models.Model) :
+class Article(models.Model):
     title = models.CharField(max_length=100)
     category = models.CharField(max_length=50, default=u'Uncategorized')
     content = models.TextField(blank=True, null=True)
