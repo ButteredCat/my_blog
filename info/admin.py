@@ -4,7 +4,8 @@ from solo.admin import SingletonModelAdmin
 from .models import Info
 
 # Register your models here.
-admin.site.register(Info, SingletonModelAdmin)
+class InfoAdmin(SingletonModelAdmin):
+    pass
 
-config = Info.get_solo()
+admin.site.register(Info, InfoAdmin)
 
