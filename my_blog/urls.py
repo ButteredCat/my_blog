@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView 
 
 urlpatterns = [
     # Examples:
@@ -12,4 +13,7 @@ urlpatterns = [
     url(r'^about/$', 'article.views.about', name = 'about'),
     url(r'^tag(?P<tag>\w+)/$', 'article.views.search_tag', name = 'search_tag'),
     url(r'^search/$','article.views.search', name = 'search'),
+    url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', 
+    content_type='text/plain'))
 ]
+
