@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
+from info.models import Info
+
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=100)
@@ -18,8 +20,9 @@ class Article(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        host_name = Info.get_solo().host
         path = reverse('detail', kwargs={'id': self.id})
-        return "http://www.butteredcat.org%s" % path
+        return "%s%s" % (host_name, path)
 
     class Meta:
         ordering = ['-date_time']
