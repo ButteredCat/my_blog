@@ -21,17 +21,19 @@ class Article(models.Model):
     last_updated_by = models.ForeignKey(User, null=True,
                                         related_name='last_updated_by')
     is_draft = models.BooleanField(default=False)
+
+    objects = models.Manager()
     published = PublishManager()
 
     def __unicode__(self):
         return self.title
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('detail', [self.id,]) 
+        host_name = Info.get_solo().host
+        path = reverse('detail', kwargs={'id': self.id})
+        return '%s%s' % (host_name, path)
 
     class Meta:
         ordering = ['-date_time']
-
 
 
