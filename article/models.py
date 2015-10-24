@@ -5,6 +5,12 @@ from django.core.urlresolvers import reverse
 from info.models import Info
 
 # Create your models here.
+class PublishManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishManager, self).get_queryset().exclude(
+        is_draft=True)
+
+
 class Article(models.Model):
     title = models.CharField(max_length=100)
     category = models.CharField(max_length=50, default=u'Uncategorized')
@@ -15,8 +21,9 @@ class Article(models.Model):
     last_updated_by = models.ForeignKey(User, null=True,
                                         related_name='last_updated_by')
     is_draft = models.BooleanField(default=False)
+    published = PublishManager()
 
-    def __unicode__(self) :
+    def __unicode__(self):
         return self.title
 
     def get_absolute_url(self):
@@ -26,3 +33,6 @@ class Article(models.Model):
 
     class Meta:
         ordering = ['-date_time']
+
+
+
