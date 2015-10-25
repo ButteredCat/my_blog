@@ -13,7 +13,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (None, {'fields': ['is_draft']}),
     ]
     list_display = (
-        'title', 
+        'title', 'category', 
         'author', 'date_time',
         'last_updated_by', 'last_updated_in',
         'is_draft'

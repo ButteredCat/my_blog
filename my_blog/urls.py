@@ -11,7 +11,8 @@ urlpatterns = [
     url(r'^article/(?P<id>\d+)/$', 'article.views.detail', name='detail'),
     url(r'^archives/$', 'article.views.archives', name = 'archives'),
     url(r'^about/$', 'article.views.about', name = 'about'),
-    url(r'^tag(?P<tag>\w+)/$', 'article.views.search_tag', name = 'search_tag'),
+    url(r'^category/(?P<category>\w+)/$', 'article.views.search_category',
+        name = 'search_category'),
     url(r'^search/$','article.views.search', name = 'search'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', 
     content_type='text/plain'))
