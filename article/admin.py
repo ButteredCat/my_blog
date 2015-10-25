@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .forms import ArticleForm
-from .models import Article
+from .models import Article, Category
 
 # Register your models here.
 class ArticleAdmin(admin.ModelAdmin):
@@ -13,14 +13,14 @@ class ArticleAdmin(admin.ModelAdmin):
         (None, {'fields': ['is_draft']}),
     ]
     list_display = (
-        'title', 'category',
+        'title', 
         'author', 'date_time',
         'last_updated_by', 'last_updated_in',
         'is_draft'
     )
     list_filter = ['date_time']
     list_editable = ['is_draft']
-    search_fields = ['title', 'content', 'category']
+    search_fields = ['title', 'content']
     data_hierarchy = 'date_time'
 
     def save_model(self, request, obj, form, change):
@@ -30,9 +30,7 @@ class ArticleAdmin(admin.ModelAdmin):
             obj.last_updated_by = request.user
         obj.save()
 
-class StackedItemInline(admin.StackedInline):
-    classes = ['grp-collapse grp-open']
-    inline_classes = ['grp-collapse grp-open']
-
 
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Category)
+

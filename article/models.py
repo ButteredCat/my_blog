@@ -5,6 +5,21 @@ from django.core.urlresolvers import reverse
 from info.models import Info
 
 # Create your models here.
+class CategoryManager(models.Manager):
+    def get_queryset(self):
+        return super(CategoryManager, self).get_queryset()
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    objects = models.Manager()
+    lists = CategoryManager()
+
+    def __unicode__(self):
+        return self.name
+
+
 class PublishManager(models.Manager):
     def get_queryset(self):
         return super(PublishManager, self).get_queryset().exclude(
@@ -13,7 +28,7 @@ class PublishManager(models.Manager):
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
-    category = models.CharField(max_length=50, default=u'Uncategorized')
+    category = models.ForeignKey(Category, null=True)
     content = models.TextField(blank=True, null=True)
     date_time = models.DateTimeField(auto_now_add=True)
     last_updated_in = models.DateTimeField(auto_now=True)
