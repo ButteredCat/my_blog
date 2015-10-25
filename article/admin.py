@@ -19,7 +19,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'is_draft'
     )
     list_filter = ['date_time']
-    list_editable = ['is_draft']
+    list_editable = ['category', 'is_draft']
     search_fields = ['title', 'content']
     data_hierarchy = 'date_time'
 
