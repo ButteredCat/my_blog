@@ -23,7 +23,7 @@ def home(request):
 
 def detail(request, id):
     try:
-        post = Article.published.all().get(id=str(id))
+        post = Article.published.get(id=str(id))
     except:
         raise Http404
     return render(request, 'post.html', {'post': post})
@@ -36,12 +36,12 @@ def archives(request):
 def about(request):
     return render(request, 'about.html')
 
-def search_tag(request, tag) :
+def search_category(request, category):
     try:
-        post_list = Article.published.all().filter(category__iexact=tag)
+        post_list = Article.published.filter_by_category(category)
     except Article.DoesNotExist :
         raise Http404
-    return render(request, 'tag.html', {'post_list': post_list})
+    return render(request, 'category.html', {'post_list': post_list})
 
 def search(request):
     if 's' in request.GET:
@@ -49,7 +49,7 @@ def search(request):
         if not s:
             return render(request, 'home.html')
         else:
-            posts = Article.published.all().filter(title__icontains=s)
+            posts = Article.published.filter(title__icontains=s)
             return render(request, 'archives.html', {'post_list': posts,
                                                'error': len(posts)==0})
     return redirect('/')
