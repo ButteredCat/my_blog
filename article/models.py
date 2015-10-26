@@ -18,9 +18,11 @@ class PublishManager(models.Manager):
             is_draft=True)
 
     def filter_by_category(self, n):
-        return self.get_queryset().filter(
-            category=Category.objects.get(name=n))
-
+        try:
+            return self.get_queryset().filter(
+                category=Category.objects.get(name=n))
+        except Category.DoesNotExist:
+            raise Article.DoesNotExist
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
