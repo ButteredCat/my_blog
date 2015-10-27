@@ -1,3 +1,6 @@
 [submodule "bundles/django-pagedown"]
 	path = bundles/django-pagedown
 	url = https://github.com/timmyomahony/django-pagedown.git
+[submodule "bundles/django-solo"]
+	path = bundles/django-solo
+	url = https://github.com/lazybird/django-solo.git
