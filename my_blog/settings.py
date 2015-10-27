@@ -21,7 +21,7 @@ ON_SERVER = 'SERVER_SOFTWARE' in os.environ
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%vah5ko*77bqju#)+7$r%x+6%wo*edfyqtrr341=40x-&t&ok&'
+SECRET_KEY = '9%6hhtpb+9hwz+cpr+*j=e&d-u%8-y%&9(@c1p@3n3!suwual7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not ON_SERVER 
@@ -87,8 +87,8 @@ if ON_SERVER:
 else:
     MYSQL_HOST = 'localhost'
     MYSQL_PORT = '3306'
-    MYSQL_USER = ''  # fill in the local mysql user name before use
-    MYSQL_PASS = ''  # fill in the password
+    MYSQL_USER = 'root'  # fill in the local mysql user name before use
+    MYSQL_PASS = 'ez=zmxcx2'  # fill in the password
     MYSQL_DB = 'myblog'
 
 DATABASES = {
