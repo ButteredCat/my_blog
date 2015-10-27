@@ -87,8 +87,8 @@ if ON_SERVER:
 else:
     MYSQL_HOST = 'localhost'
     MYSQL_PORT = '3306'
-    MYSQL_USER = 'root'
-    MYSQL_PASS = 'ez=zmxcx2'
+    MYSQL_USER = ''  # fill in the local mysql user name before use
+    MYSQL_PASS = ''  # fill in the password
     MYSQL_DB = 'myblog'
 
 DATABASES = {
