@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import sensitive
+from sensitive import SECRET_KEY, LOCAL_DB_USER, LOCAL_DB_PASS
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ON_SERVER = 'SERVER_SOFTWARE' in os.environ
@@ -21,12 +21,10 @@ ON_SERVER = 'SERVER_SOFTWARE' in os.environ
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = sensitive.SECRET_KEY
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not ON_SERVER 
-#DEBUG = True
+
+
 ALLOWED_HOSTS = ['www.butteredcat.org'] if ON_SERVER else ['*']
 
 
@@ -88,8 +86,8 @@ if ON_SERVER:
 else:
     MYSQL_HOST = 'localhost'
     MYSQL_PORT = '3306'
-    MYSQL_USER = sensitive.LOCAL_DB_USER 
-    MYSQL_PASS = sensitive.LOCAL_DB_PASS
+    MYSQL_USER = LOCAL_DB_USER 
+    MYSQL_PASS = LOCAL_DB_PASS
     MYSQL_DB = 'myblog'
 
 DATABASES = {
