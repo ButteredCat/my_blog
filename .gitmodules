@@ -4,3 +4,6 @@
 [submodule "bundles/django-solo"]
 	path = bundles/django-solo
 	url = https://github.com/lazybird/django-solo.git
+[submodule "bundles/python-markdown2"]
+	path = bundles/python-markdown2
+	url = https://github.com/trentm/python-markdown2.git
