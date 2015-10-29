@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from sensitive import SECRET_KEY, LOCAL_DB_USER, LOCAL_DB_PASS
+from sensitive import SECRET_KEY, LOCAL_DB, LOCAL_DB_USER, LOCAL_DB_PASS
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ON_SERVER = 'SERVER_SOFTWARE' in os.environ
@@ -25,7 +25,7 @@ ON_SERVER = 'SERVER_SOFTWARE' in os.environ
 DEBUG = not ON_SERVER 
 
 
-ALLOWED_HOSTS = ['butteredcat.sinaapp.com'] if ON_SERVER else ['*']
+ALLOWED_HOSTS = ['www.butteredcat.org'] if ON_SERVER else ['*']
 
 
 # Application definition
@@ -88,7 +88,7 @@ else:
     MYSQL_PORT = '3306'
     MYSQL_USER = LOCAL_DB_USER 
     MYSQL_PASS = LOCAL_DB_PASS
-    MYSQL_DB = 'myblog'
+    MYSQL_DB = LOCAL_DB
 
 DATABASES = {
     'default': {

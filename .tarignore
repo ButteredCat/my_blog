@@ -1,9 +1,19 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-
 *.py[cod]
 
-.git/*
+# git files
+.git*
 
-bundles/*
+# github readme file
+README.md
+
+# tar exclude
+.tarignore
+
+# package script
+pack.py
+
+# git submodule directory
+bundles*
 
