@@ -25,7 +25,7 @@ ON_SERVER = 'SERVER_SOFTWARE' in os.environ
 DEBUG = not ON_SERVER 
 
 
-ALLOWED_HOSTS = ['www.butteredcat.org'] if ON_SERVER else ['*']
+ALLOWED_HOSTS = ['butteredcat.sinaapp.com'] if ON_SERVER else ['*']
 
 
 # Application definition
@@ -118,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = 'http://bi4swo.sinaapp.com/static/' if ON_SERVER else '/static/'
+STATIC_URL = 'http://butteredcat.sinaapp.com/static/' if ON_SERVER else '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
