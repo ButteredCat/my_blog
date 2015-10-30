@@ -5,7 +5,21 @@ A django blog system deployed on Sina App Engine (SAE).
 * Based on Django 1.8.
 * Inspired by [Andrew Liu](https://www.gitbook.com/book/andrew-liu/django-blog/details).
 
-## Before Use
-* Create a `sensitive.py` in `my_blog`, in which you define 3 variables: [`SECRET_KEY`](https://docs.djangoproject.com/en/dev/ref/settings/#secret-key), `LOCAL_DB_USER` and `LOCAL_DB_PASS`.
+## Installation
+    git clone https://github.com/ButteredCat/my_blog.git
+    cd my_blog
+    git submodule init
+    git submodule update
+
+## Debug on localhost
+* Create your local MySQL database.
+* Create a `sensitive.py` in `my_blog`, in which you define 4 variables: [`SECRET_KEY`](https://docs.djangoproject.com/en/dev/ref/settings/#secret-key), `LOCAL_DB`, `LOCAL_DB_USER` and `LOCAL_DB_PASS`.
 * Customise `ALLOWED_HOSTS` and `STATIC_URL` in `my_blog/settings.py`.
 * Change `short_name` in `templates/duoshuo.html` to your own. You can get one in [Duoshuo](http://duoshuo.com).
+* Setup datbase with django migration tools.
+* Runserver.
+
+## Deploy on SAE
+* Run `pack.py` to package code and static files.
+* Export local database.
+* Upload package and database to SAE.
