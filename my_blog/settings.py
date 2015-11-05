@@ -25,7 +25,7 @@ ON_SERVER = 'SERVER_SOFTWARE' in os.environ
 DEBUG = not ON_SERVER 
 
 
-ALLOWED_HOSTS = ['www.butteredcat.org'] if ON_SERVER else ['*']
+ALLOWED_HOSTS = ['www.butteredcat.org', 'butteredcat.sinaapp.com'] if ON_SERVER else ['*']
 
 
 # Application definition
