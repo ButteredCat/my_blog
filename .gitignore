@@ -2,4 +2,10 @@
 __pycache__/
 *.py[cod]
 
+# virtualenv 
+env/
+
+# OS X Desktop Services Store
+*.DS_Store
+
 my_blog/sensitive.py
