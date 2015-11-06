@@ -15,5 +15,10 @@ README.md
 pack.py
 
 # git submodule directory
-bundles*
+bundles/
 
+# OS X files
+*.DS_Store
+
+# virtualenv
+env/
