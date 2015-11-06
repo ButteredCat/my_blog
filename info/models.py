@@ -8,6 +8,7 @@ class Info(SingletonModel):
     description = models.CharField(max_length=255, default='My Django Blog')
     host = models.URLField()
     email = models.EmailField()
+    duoshuo = models.CharField(max_length=31)
 
     def __unicode__(self):
         return u"Site Information"

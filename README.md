@@ -16,7 +16,6 @@ A django blog system deployed on Sina App Engine (SAE).
 * Create your local MySQL database.
 * Create a `sensitive.py` in `my_blog`, in which you define 4 variables: [`SECRET_KEY`](https://docs.djangoproject.com/en/dev/ref/settings/#secret-key), `LOCAL_DB`, `LOCAL_DB_USER` and `LOCAL_DB_PASS`.
 * Customise `ALLOWED_HOSTS` and `STATIC_URL` in `my_blog/settings.py`.
-* Change `short_name` in `templates/duoshuo.html` to your own. You can get one in [Duoshuo](http://duoshuo.com).
 * Setup database with django migration tool.
 
 ## Deploy on SAE
