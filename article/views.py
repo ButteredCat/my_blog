@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views import generic
 
 from .models import Article
 
@@ -9,17 +10,14 @@ articles_per_page = 5
 
 
 # Create your views here.
-def home(request):
-    posts = Article.published.all()
-    paginator = Paginator(posts, articles_per_page)
-    page = request.GET.get('page')
-    try:
-        post_list = paginator.page(page)
-    except PageNotAnInteger:
-        post_list = paginator.page(1)
-    except  EmptyPage:
-        post_list = paginator.paginator(paginator.num_pages)
-    return render(request, 'home.html', {'post_list': post_list})
+class HomeView(generic.ListView):
+    template_name = 'home.html'
+    context_object_name = 'post_list'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return Article.published.all()
+
 
 def detail(request, id):
     try:
