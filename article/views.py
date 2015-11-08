@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.views import generic
 
-from .models import Article
+from .models import Article, Category
 
 
 class HomeListView(generic.ListView):
@@ -20,18 +20,14 @@ class ArticleDetailView(generic.DetailView):
     template_name = 'post.html'
 
 
-
 class CategoryView(generic.ListView):
+    model = Article
     template_name = 'category.html'
-    context_object_name = 'post_list'
 
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, name=self.args[0])
+        return Article.published.filter(category=self.category)
 
-def search_category(request, category):
-    try:
-        post_list = Article.published.filter_by_category(category)
-    except Article.DoesNotExist :
-        raise Http404
-    return render(request, 'category.html', {'post_list': post_list})
 
 def search(request):
     if 's' in request.GET:

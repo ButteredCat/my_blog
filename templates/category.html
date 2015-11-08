@@ -3,22 +3,22 @@
 {% load custom_markdown %}
 {% block content %}
 <div class="posts">
-    {% for post in post_list %}
+    {% for article in object_list %}
         <section class="post">
             <header class="post-header">
-                <h2 class="post-title"><a href="{% url "detail" pk=post.id %}">{{ post.title }}</a></h2>
+                <h2 class="post-title"><a href="{% url "detail" pk=article.id %}">{{ article.title }}</a></h2>
 
                     <p class="post-meta">
-                        Time:  <a class="post-author" href="#">{{ post.date_time |date:"Y M d" }}</a><a class="post-category post-category-js" href="{% url "search_category" category=post.category %}">{{ post.category|title }}</a>
+                        Time:  <a class="post-author" href="#">{{ article.date_time |date:"Y M d" }}</a><a class="post-category post-category-js" href="{% url "search_category" article.category %}">{{ article.category | title }}</a>
                     </p>
             </header>
 
                 <div class="post-description">
                     <p>
-                        {{ post.content|custom_markdown|truncatewords_html:50 }}
+                        {{ article.content|custom_markdown|truncatewords_html:50 }}
                     </p>
                 </div>
-                <a class="pure-button" href="{% url "detail" pk=post.id %}">Read More >>> </a>
+                <a class="pure-button" href="{% url "detail" pk=article.id %}">Read More >>> </a>
         </section>
     {% endfor %}
 </div><!-- /.blog-post -->
