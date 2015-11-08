@@ -43,7 +43,7 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         host_name = Info.get_solo().host
-        path = reverse('detail', kwargs={'id': self.id})
+        path = reverse('detail', kwargs={'pk': self.id})
         return '%s%s' % (host_name, path)
 
     class Meta:
