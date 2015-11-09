@@ -3,6 +3,9 @@
 {% load custom_markdown %}
 {% block content %}
 <div class="posts">
+    {% if not object_list %}
+        <h2 class="post-title">没有相关文章</a></h2>
+    {% else %}
     {% for article in object_list %}
         <section class="post">
             <header class="post-header">
@@ -21,5 +24,6 @@
                 <a class="pure-button" href="{% url "detail" pk=article.id %}">Read More >>> </a>
         </section>
     {% endfor %}
+    {% endif %}
 </div><!-- /.blog-post -->
 {% endblock %}

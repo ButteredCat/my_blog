@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class="posts">
-    {% if error %}
-        <h2 class="post-title">没有相关文章题目</a></h2>
+    {% if not latest %}
+        <h2 class="post-title">没有相关文章</a></h2>
     {% else %}
     {% for article in latest %}
         <section class="post">
