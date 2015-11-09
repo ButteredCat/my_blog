@@ -18,12 +18,25 @@
 
                 <div class="post-description">
                     <p>
-                        {{ article.content|custom_markdown|truncatewords_html:50 }}
+                        {{ article.content|custom_markdown|truncatewords_html:10 }}
                     </p>
                 </div>
                 <a class="pure-button" href="{% url "detail" pk=article.id %}">Read More >>> </a>
         </section>
     {% endfor %}
+    {% if is_paginated %}
+      <div>
+      <ul class="pager">
+      {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}">上一页</a></li>
+      {% endif %}
+
+      {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}">下一页</a></li>
+      {% endif %}
+      </ul>
+      </div>
+    {% endif %}
     {% endif %}
 </div><!-- /.blog-post -->
 {% endblock %}
