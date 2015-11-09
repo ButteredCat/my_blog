@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.views import generic
+from django.db.models import Q
 
 from .models import Article, Category
 
@@ -21,7 +22,6 @@ class ArticleDetailView(generic.DetailView):
 
 
 class CategoryView(generic.ListView):
-    model = Article
     template_name = 'category.html'
 
     def get_queryset(self):
@@ -29,14 +29,15 @@ class CategoryView(generic.ListView):
         return Article.published.filter(category=self.category)
 
 
-def search(request):
-    if 's' in request.GET:
-        s = request.GET['s']
-        if not s:
-            return render(request, 'home.html')
+class SearchView(generic.ListView):
+    model = Article
+    template_name = 'category.html'
+
+    def get_queryset(self):
+        keyword = self.request.GET.get('s')
+        if keyword:
+            return Article.published.filter(Q(title__icontains=keyword)|
+                                            Q(content__icontains=keyword))
         else:
-            posts = Article.published.filter(title__icontains=s)
-            return render(request, 'archives.html', {'post_list': posts,
-                                               'error': len(posts)==0})
-    return redirect('/')
+            return Article.published.all()
 

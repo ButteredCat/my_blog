@@ -7,18 +7,14 @@ from article import views
 
 
 urlpatterns = [
-    # Examples:
-    # url(r'^$', 'my_blog.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.HomeListView.as_view(), name = 'home'),
     url(r'^article/(?P<pk>[0-9]+)/$', views.ArticleDetailView.as_view(), name='detail'),
     url(r'^archives/$', ArchiveIndexView.as_view(model=Article, template_name='archives.html',
         date_field='date_time', queryset=Article.published.all()), name = 'archives'),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name = 'about'),
-    url(r'^category/(\w+)/$', views.CategoryView.as_view(),
-        name = 'search_category'),
-    url(r'^search/$','article.views.search', name = 'search'),
+    url(r'^category/(\w+)/$', views.CategoryView.as_view(), name = 'search_category'),
+    url(r'^search/$',views.SearchView.as_view(), name = 'search'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', 
         content_type='text/plain'))
 ]
