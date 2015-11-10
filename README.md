@@ -10,6 +10,8 @@ A django blog system deployed on Sina App Engine (SAE).
     cd my_blog
     git submodule init
     git submodule update
+    virtualenv env
+    source env/bin/activate
     pip install -r requirements.txt
 
 ## Before Use
