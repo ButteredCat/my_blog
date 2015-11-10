@@ -14,7 +14,11 @@ APPS = (
 APP_NAMES = [EACH_APP[0] for EACH_APP in APPS]
 LIBS = [BUNDLES + EACH_APP[1] for EACH_APP in APPS]
 
+def collect_static():
+    os.system('python manage.py collectstatic')
+
 def prepare():
+    collect_static()
     for each in LIBS:
         os.system('cp -r %s %s' % (each, SITE_PACKAGES))
 
