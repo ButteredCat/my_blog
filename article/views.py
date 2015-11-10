@@ -19,6 +19,9 @@ class ArticleDetailView(generic.DetailView):
     context_object_name = 'post'
     template_name = 'post.html'
 
+    def get_queryset(self):
+        return Article.published.all()
+
 
 class CategoryView(generic.ListView):
     template_name = 'category.html'
