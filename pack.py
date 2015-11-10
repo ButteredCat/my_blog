@@ -14,6 +14,7 @@ APPS = (
 APP_NAMES = [EACH_APP[0] for EACH_APP in APPS]
 LIBS = [BUNDLES + EACH_APP[1] for EACH_APP in APPS]
 
+
 def collect_static():
     os.system('python manage.py collectstatic')
 
@@ -34,6 +35,7 @@ def main():
     prepare()
     package()
     cleanup()
+
 
 if __name__=='__main__':
     main()
