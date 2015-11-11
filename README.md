@@ -8,8 +8,7 @@ A django blog system deployed on Sina App Engine (SAE).
 ## Installation on localhost
     git clone https://github.com/ButteredCat/my_blog.git
     cd my_blog
-    git submodule init
-    git submodule update
+    git submodule update --init --recursive
     virtualenv env
     source env/bin/activate
     pip install -r requirements.txt
