@@ -81,10 +81,26 @@ class ArticleCategoryViewTests(TestCase):
             args=(self.category_name,)))
         self.assertNotContains(response, draft.title)
 
-class ArticleArchiveViewTests(TestCase):
-    def setUp(self):
-        pass
 
+class ArticleArchiveViewTests(TestCase):
+    articles = []
+
+    def setUp(self):
+        for i in range(5):
+            title = 'article %d' % i
+            self.articles.append(create_article(title, -i))
+
+    def test_should_get_article_when_access_archive(self):
+        response = self.client.get(reverse('archives'))
+        for i in range(len(self.articles)):
+            self.assertContains(response, self.articles[i].title)
+        
+    def test_should_not_get_draft(self):
+        draft = create_article('draft', -1, 'nothing', 'django', True)
+        self.articles.append(draft)
+        response = self.client.get(reverse('archives'))
+        self.assertNotContains(response, draft.title)
+        
 
 class ArticleSearchViewTests(TestCase):
     def setUp(self):
