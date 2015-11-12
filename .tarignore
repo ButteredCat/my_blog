@@ -17,10 +17,17 @@ pack.py
 # git submodule directory
 bundles/
 
-# OS X files
-*.DS_Store
-
 # virtualenv
 env/
 
+# test cases
+tests.py
+
+# migrations
+migrations/
+
+# OS X files
+*.DS_Store
+
+# pip requirements
 requirements.txt
