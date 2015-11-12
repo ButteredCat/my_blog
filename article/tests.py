@@ -23,13 +23,31 @@ def create_article(title, days, is_draft=False, category_name='test', content='d
 
 
 class ArticleDetailViewTests(TestCase):
+    published = None
+    draft = None
+
+    def setUp(self):
+        self.published = create_article('published article', -1, False, 'test',
+                'test article')
+        self.draft = create_article('draft', -1, True)
+        
     def test_should_have_access_to_published(self):
-        published = create_article('test title', -1)
-        response = self.client.get(reverse('detail', args=(published.id,)))
+        response = self.client.get(reverse('detail', args=(self.published.id,)))
         self.assertEqual(response.status_code, 200)
 
+    def test_should_contain_title(self):
+        response = self.client.get(reverse('detail', args=(self.published.id,)))
+        self.assertContains(response, self.published.title)
+
+    def test_should_contain_content(self):
+        response = self.client.get(reverse('detail', args=(self.published.id,)))
+        self.assertContains(response, self.published.content)
+
+    def test_should_contain_category(self):
+        response = self.client.get(reverse('detail', args=(self.published.id,)))
+        self.assertContains(response, self.published.category.name)
+
     def test_should_not_have_access_to_draft(self):
-        draft = create_article('test title', -1, True)
-        response = self.client.get(reverse('detail', args=(draft.id,)))
+        response = self.client.get(reverse('detail', args=(self.draft.id,)))
         self.assertEqual(response.status_code, 404)
 
