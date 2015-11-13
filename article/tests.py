@@ -103,5 +103,31 @@ class ArticleArchiveViewTests(TestCase):
         
 
 class ArticleSearchViewTests(TestCase):
+    keyword = ['django', 'python', 'github']
+    published = [] 
+    draft = None
+
     def setUp(self):
-        pass
+        self.published = [create_article(self.keyword[0], -1),
+                create_article('any but keyword', -1, self.keyword[1])]
+        self.draft = create_article(self.keyword[2], -1, 'to be, or not to be',
+                'test', True)
+
+    def test_should_get_results_when_search_title(self):
+        response = self.client.get(reverse('search'), {'s': self.keyword[0]})
+        self.assertContains(response, self.published[0].title)
+
+    def test_should_get_results_when_search_content(self):
+        response = self.client.get(reverse('search'), {'s': self.keyword[1]})
+        self.assertContains(response, self.published[1].title)
+
+    def test_should_not_get_draft(self):
+        response = self.client.get(reverse('search'), {'s': self.keyword[2]})
+        self.assertNotContains(response, self.draft.content)
+
+    def test_should_get_all_published_when_keyword_is_null(self):
+        response = self.client.get(reverse('search'), {'s': ''})
+        self.assertContains(response, self.published[0].content) 
+        self.assertContains(response, self.published[1].content) 
+        self.assertNotContains(response, self.draft.content) 
+
