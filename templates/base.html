@@ -16,7 +16,8 @@
     <title>{{ site_info.name }}</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{% static "article/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!--<link href="{% static "article/css/bootstrap.min.css" %}" rel="stylesheet">-->
+    <link href="http://libs.useso.com/js/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{% static "article/css/blog-post.css" %}" rel="stylesheet">
 
@@ -75,12 +76,14 @@
                 <div class="well">
                     <h4>搜索</h4>
                     <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
+			<form name="search_form" action="/search/" method="get">
+                   	     <input type="text" class="form-control" name="s" placeholder="Search this site">
+			</form>
+			 <span class="input-group-btn">
+				<button class="btn btn-default" type="button">
+			       		<span class="glyphicon glyphicon-search"></span>
+				</button>
+			</span>
                     </div>
                     <!-- /.input-group -->
                 </div>
@@ -147,7 +150,6 @@
     <script src="{% static "article/js/jquery.js" %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{% static "article/js/bootstrap.min.js" %}"></script>
     <script src="http://libs.useso.com/js/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </body>

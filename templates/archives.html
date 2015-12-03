@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="posts">
-    {% if not latest %}
-        <h2 class="post-title">没有相关文章</a></h2>
-    {% else %}
-    {% for article in latest %}
-        <section class="post">
-            <header class="post-header">
-                <h2 class="post-title"><a href="{% url "detail" pk=article.id %}">{{ article.title }}</a></h2>
+<div class="col-md-8">
 
-                    <p class="post-meta">
-                        Time: <a class="post-author" href="#">{{ article.date_time | date:"Y /m /d"}}</a> <a class="post-category post-category-js" href="{% url "search_category" article.category %}">{{ article.category }}</a>
-                    </p>
-            </header>
-        </section>
-    {% endfor %}
+	<h1 class="page-header">
+		{{ site_info.name }} 
+	<small>{{ site_info.description }}</small>
+	</h1>
+
+	{% if not latest %}
+        	<h2 class="post-title">没有相关文章</a></h2>
+	{% else %}
+	{% for article in latest %}
+                <h2>
+			<a href="{% url "detail" pk=article.id %}">{{ article.title }}</a>
+                </h2>
+		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ article.date_time | date:"Y M d" }}</p>
+                <hr>
+	{% endfor %}
     {% endif %}
 </div><!-- /.blog-post -->
 {% endblock %}
