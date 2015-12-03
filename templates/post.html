@@ -2,22 +2,30 @@
 
 {% load custom_markdown %}
 {% block content %}
-<div class="posts">
-        <section class="post">
-            <header class="post-header">
-                <h2 class="post-title">{{ post.title }}</h2>
+<!-- Page Content -->
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
 
-                    <p class="post-meta">
-                        Time:  <a class="post-author" href="#">{{ post.date_time|date:"Y M d"}}</a> <a class="post-category post-category-js" href="{% url "search_category" post.category %}">{{ post.category|title }}</a>
-                    </p>
-            </header>
+                <!-- Blog Post -->
 
-                <div class="post-description">
-                    <p>
-                        {{ post.content|custom_markdown }}
-                    </p>
-                </div>
-        </section>
-	{% include "duoshuo.html" %}
-</div><!-- /.blog-post -->
+                <!-- Title -->
+		<h1>{{ post.title }}</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by <a href="#">Start Bootstrap</a>
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date_time|date:"Y M d"}}</p>
+
+                <hr>
+
+                <!-- Post Content -->
+		<p>{{ post.content|custom_markdown }}</p>
+
+		{% include "duoshuo.html" %}
+	    </div>
 {% endblock %}

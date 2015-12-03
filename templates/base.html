@@ -1,71 +1,155 @@
 <!--base.html-->
-<!doctype html>
+<!DOCTYPE html>
 {% load staticfiles %}
 {% load solo_tags %}
-{% get_solo 'info.Info' as site_info %}
+{% get_solo 'info.info' as site_info %}
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <title>{{ site_info.name }}</title>
-    <link rel="shortcut icon" href="http://imgsize.ph.126.net/?imgurl=http://img0.ph.126.net/Odok4yuZBkn-7fh45MREpw==/6631438301118338403.jpg_16x16x0x90.jpg">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-    <link rel="stylesheet" href="{% static "article/css/blog.css" %}">
-    <link rel="stylesheet" href="{% static "article/css/default.css" %}">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "article/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static "article/css/blog-post.css" %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
+
 <body>
-<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-        <div class="header">
-            <h1 class="brand-title"><a href="{% url "home" %}">{{ site_info.name }}</a></h1>
-            <h2 class="brand-tagline">{{ site_info.description }}</h2>
-            <nav class="nav">
-                <ul class="nav-list">
-		    <li>
-		  	<form class="pure-form" action="/search/" method="get">
-			<input class="pure-input-3-3" type="text" name="s" placeholder="search">
-			</form>
-		    </li>
-                    <li class="nav-item">
-                        <a class="button-success pure-button" href="/">主页</a>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+		<a class="navbar-brand" href="/">{{ site_info.name }}</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+			<a href="{% url "about" %}">关于</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="button-success pure-button" href="{% url "archives" %}">归档</a>
+                    <li>
+                        <a href="#">Services</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="http://photo.butteredcat.org">摄影</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="https://github.com/butteredcat">GitHub</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="button-error pure-button" href="http://weibo.com/butteredcat">微博</a>
+                    <li>
+			<a href="mailto:{{ site_info.email }}">联系我</a>
                     </li>
                 </ul>
-            </nav>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-    </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
 
+	<div class="row">
+    	    {% block content %}
+    	    {% endblock %}
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-            {% block content %}
-            {% endblock %}
-            <div class="footer">
-                <div class="pure-menu pure-menu-horizontal pure-menu-open">
-                    <ul>
-                        <li><a href="{% url "about" %}">关于</a></li>
-                        <li><a href="mailto:{{ site_info.email }}">联系我</a></li>
-                    </ul>
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>搜索</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>分类</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
-        </div>
+            <!-- /.row -->
+        </footer>
+
     </div>
-</div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{% static "article/js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "article/js/bootstrap.min.js" %}"></script>
+    <script src="http://libs.useso.com/js/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
