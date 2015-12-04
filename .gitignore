@@ -6,9 +6,6 @@ __pycache__/
 # virtualenv 
 env/
 
-# static files
-static/
-
 # OS X Desktop Services Store
 *.DS_Store
 
