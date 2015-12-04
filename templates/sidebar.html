@@ -1,35 +1,19 @@
 
-			<div class="list-group" style="padding: 15px 15px;">
-				 <a href="#" class="list-group-item active">Home</a>
+			<div class="list-group" style="padding: 0px 20px;">
+				 <a href="#" class="list-group-item active">分类</a>
+				 {% for category in categories %}
 				 <div class="list-group-item">
-					List header
+					 <span class="badge">0</span>
+					 {{ category.name }}
 				</div>
-				<div class="list-group-item">
-					<h4 class="list-group-item-heading">
-						List group item heading
-					</h4>
-					<p class="list-group-item-text">
-						...
-					</p>
-				</div>
-				<div class="list-group-item">
-					<span class="badge">14</span>Help
-				</div> <a class="list-group-item active"><span class="badge">14</span>Help</a>
+				{% endfor %}
 			</div>
                 <!-- Blog Categories Well -->
-                <div class="well">
+                <div class="well" style="padding: 0px 20px;">
                     <h4>分类</h4>
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
