@@ -9,7 +9,7 @@
 	<a href="{% url "archives" %}" class="list-group-item active">文章分类</a>
 	{% for category in categories %}
 		<div class="list-group-item">
-			<b><a href="{% url "search_category" category.name %}">{{ category.name }}</a></b>
+			<a href="{% url "search_category" category.name %}">{{ category.name }}</a>
 		</div>
 	{% endfor %}
 </div>
