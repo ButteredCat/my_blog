@@ -15,16 +15,16 @@ README.md
 pack.py
 
 # git submodule directory
-bundles/
+bundles/*
 
 # virtualenv
-env/
+env/*
 
 # test cases
 tests.py
 
 # migrations
-migrations/
+migrations/*
 
 # OS X files
 *.DS_Store

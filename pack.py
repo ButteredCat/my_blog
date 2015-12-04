@@ -24,7 +24,7 @@ def prepare():
         os.system('cp -r %s %s' % (each, SITE_PACKAGES))
 
 def package():
-    os.system('tar -zcv --exclude-from .tarignore -f ../deploy.tar.gz \
+    os.system('tar -zcv --exclude-vcs --exclude-from .tarignore -f ../deploy.tar.gz \
                 -C %s .' % (os.getcwd()))
     
 def cleanup():
