@@ -1,23 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-md-8">
 
-	<h1 class="page-header">
-		{{ site_info.name }} 
+<h1 class="page-header">
+	{{ site_info.name }} 
 	<small>{{ site_info.description }}</small>
-	</h1>
+</h1>
 
-	{% if not latest %}
+{% if not latest %}
         	<h2 class="post-title">没有相关文章</a></h2>
-	{% else %}
+{% else %}
 	{% for article in latest %}
-                <h2>
-			<a href="{% url "detail" pk=article.id %}">{{ article.title }}</a>
-                </h2>
+		<h2><a href="{% url "detail" pk=article.id %}">{{ article.title }}</a></h2>
 		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ article.date_time | date:"Y M d" }}</p>
-                <hr>
+		<hr>
 	{% endfor %}
-    {% endif %}
-</div><!-- /.blog-post -->
+{% endif %}
+
 {% endblock %}

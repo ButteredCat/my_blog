@@ -17,7 +17,7 @@
 		<p>
                    {{ post.content|custom_markdown|truncatewords_html:100  }}
 		</p>
-		<a class="btn btn-default" href="{% url "detail" pk=post.id %}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+		<p align="right"><a class="btn btn-default" href="{% url "detail" pk=post.id %}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a></p>
 
                 <hr>
 	{% endfor %}
