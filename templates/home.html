@@ -2,8 +2,6 @@
 
 {% load custom_markdown %}
 {% block content %}
-           <div class="col-md-8">
-
                 <h1 class="page-header">
                    {{ site_info.name }} 
 		   <small>{{ site_info.description }}</small>
@@ -19,7 +17,7 @@
 		<p>
                    {{ post.content|custom_markdown|truncatewords_html:100  }}
 		</p>
-		<a class="btn btn-primary" href="{% url "detail" pk=post.id %}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+		<a class="btn btn-default" href="{% url "detail" pk=post.id %}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
 	{% endfor %}
@@ -38,6 +36,4 @@
 		{% endif %}
                 </ul>
 		{% endif %}
-
-            </div>
 {% endblock %}
