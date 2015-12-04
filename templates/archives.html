@@ -8,7 +8,7 @@
 </h1>
 
 {% if not latest %}
-        	<h2 class="post-title">没有相关文章</a></h2>
+        	<h2>没有相关文章</h2>
 {% else %}
 	{% for article in latest %}
 		<h2><a href="{% url "detail" pk=article.id %}">{{ article.title }}</a></h2>
