@@ -6,11 +6,10 @@
 
 <!-- Side Widget categories -->
 <div class="list-group"> 
-	<a href="#" class="list-group-item active">分类</a>
+	<a href="{% url "archives" %}" class="list-group-item active">文章分类</a>
 	{% for category in categories %}
 		<div class="list-group-item">
-		<span class="badge">0</span>
-			{{ category.name }}
+			<b><a href="{% url "search_category" category.name %}">{{ category.name }}</a></b>
 		</div>
 	{% endfor %}
 </div>
