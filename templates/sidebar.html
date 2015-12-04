@@ -9,6 +9,7 @@
 	<a href="{% url "archives" %}" class="list-group-item active">文章分类</a>
 	{% for category in categories %}
 		<div class="list-group-item">
+			<span class="badge">{{ category.num_article }}</span>
 			<a href="{% url "search_category" category.name %}">{{ category.name }}</a>
 		</div>
 	{% endfor %}
