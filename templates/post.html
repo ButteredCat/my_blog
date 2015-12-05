@@ -8,10 +8,10 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-		<h1>{{ post.title }}</h1>
+		<h2>{{ post.title }}</h2>
 
                 <!-- Date/Time -->
-		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date_time|date:"Y M d"}}</p>
+		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date_time|date:"Y M d"}} <span class="label label-primary">{{ post.category }}</span></p>
 
                 <hr>
 
