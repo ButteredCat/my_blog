@@ -12,7 +12,7 @@
 {% else %}
 	{% for article in latest %}
 		<h2><a href="{% url "detail" pk=article.id %}">{{ article.title }}</a></h2>
-		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ article.date_time | date:"Y M d" }} <span class="label label-primary">{{ article.category }}</span></p>
+		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ article.date_time | date:"Y M d" }} <span class="label label-danger">{{ article.category }}</span></p>
 		<hr>
 	{% endfor %}
 {% endif %}
