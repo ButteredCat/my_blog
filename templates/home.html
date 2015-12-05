@@ -12,12 +12,12 @@
                 <h2>
 			<a href="{% url "detail" pk=post.id %}">{{ post.title }}</a>
                 </h2>
-		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date_time | date:"Y M d" }} <span class="label label-primary">{{ post.category }}</span></p>
+		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date_time | date:"Y M d" }} <span class="label label-danger">{{ post.category }}</span></p>
                 <hr>
 		<p>
                    {{ post.content|custom_markdown|truncatewords_html:100  }}
 		</p>
-		<p align="right"><a class="btn btn-default" href="{% url "detail" pk=post.id %}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+		<p align="right"><a class="btn btn-default" href="{% url "detail" pk=post.id %}">继续阅读<span class="glyphicon glyphicon-chevron-right"></span></a></p>
 
                 <hr>
 	{% endfor %}

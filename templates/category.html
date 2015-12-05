@@ -13,7 +13,7 @@
 	<p>
 		{{ article.content|custom_markdown|truncatewords_html:10 }}
 	</p>
-	<p align="right"><a class="btn btn-default" href="{% url "detail" pk=article.id %}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+	<p align="right"><a class="btn btn-default" href="{% url "detail" pk=article.id %}">继续阅读<span class="glyphicon glyphicon-chevron-right"></span></a></p>
     {% endfor %}
 
     <!-- Pager -->
