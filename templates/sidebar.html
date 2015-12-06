@@ -15,6 +15,15 @@
 	{% endfor %}
 </div>
 
+<!-- Side Widget categories -->
+<div class="list-group"> 
+	<b><a class="list-group-item active">按月归档</a></b>
+	{% for each in year_month %}
+		<div class="list-group-item">
+			<a href="{% url "month_archive" year=each.0 month=each.1 %}">{{ each.0 }}年{{ each.1 }}月</a>
+		</div>
+	{% endfor %}
+</div>
                 <!-- links -->
 		<div class="well"> 
                     <h4>链接</h4>
