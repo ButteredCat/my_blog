@@ -1,0 +1,9 @@
+{% if not archives %}
+        	<h2>没有相关文章</h2>
+{% else %}
+	{% for article in archives %}
+		<h2><a href="{% url "detail" pk=article.id %}">{{ article.title }}</a></h2>
+		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ article.date_time | date:"Y M d" }} <span class="label label-danger">{{ article.category }}</span></p>
+		<hr>
+	{% endfor %}
+{% endif %}

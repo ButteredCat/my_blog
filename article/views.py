@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.views import generic
-from django.views.generic.dates import MonthArchiveView
+from django.views.generic.dates import MonthArchiveView, YearArchiveView
 from django.db.models import Q
 
 from .models import Article, Category
@@ -51,7 +51,17 @@ class MonthArchiveView(MonthArchiveView):
     queryset = Article.published.all()
     context_object_name = "archives"
     date_field = "date_time"
-    template_name = "archives.html"
+    template_name = "month_archive.html"
     allow_future = False
     allow_empty = True
+
+
+class YearArchiveView(YearArchiveView):
+    queryset = Article.published.all()
+    context_object_name = "archives"
+    date_field = "date_time"
+    template_name = "year_archive.html"
+    allow_future = False
+    allow_empty = True
+    make_object_list = True
 
