@@ -49,8 +49,9 @@ class SearchView(generic.ListView):
 
 class MonthArchiveView(MonthArchiveView):
     queryset = Article.published.all()
+    context_object_name = "archives"
     date_field = "date_time"
-    template_name = "category.html"
+    template_name = "archives.html"
     allow_future = False
     allow_empty = True
-    
+
