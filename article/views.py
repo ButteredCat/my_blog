@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.views import generic
+from django.views.generic.dates import MonthArchiveView
 from django.db.models import Q
 
 from .models import Article, Category
@@ -45,3 +46,11 @@ class SearchView(generic.ListView):
         else:
             return Article.published.all()
 
+
+class MonthArchiveView(MonthArchiveView):
+    queryset = Article.published.all()
+    date_field = "date_time"
+    template_name = "category.html"
+    allow_future = False
+    allow_empty = True
+    

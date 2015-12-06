@@ -16,6 +16,8 @@ urlpatterns = [
     url(r'^category/(\w+)/$', views.CategoryView.as_view(), name = 'search_category'),
     url(r'^search/$',views.SearchView.as_view(), name = 'search'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', 
-        content_type='text/plain'))
+        content_type='text/plain')),
+    url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]+)/$',
+        views.MonthArchiveView.as_view(month_format='%m'), name='month_archive'),
 ]
 
