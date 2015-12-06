@@ -18,7 +18,7 @@ class HomeListView(generic.ListView):
 class ArticleDetailView(generic.DetailView):
     model = Article
     context_object_name = 'post'
-    template_name = 'post.html'
+    template_name = 'detail.html'
 
     def get_queryset(self):
         return Article.published.all()
