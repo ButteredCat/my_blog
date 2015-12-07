@@ -18,8 +18,9 @@
 <!-- Side Widget categories -->
 <div class="list-group"> 
 	<b><a class="list-group-item active">按月归档</a></b>
-	{% for each in year_month %}
+	{% for each in year_month_counter %}
 		<div class="list-group-item">
+			<span class="badge">{{ each.2 }}</span>
 			<a href="{% url "month_archive" year=each.0 month=each.1 %}">{{ each.0 }}年{{ each.1 }}月</a>
 		</div>
 	{% endfor %}
