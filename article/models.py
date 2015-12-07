@@ -39,10 +39,13 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
-    def get_absolute_url(self):
+    def get_url(self):
         host_name = Info.get_solo().host
         path = reverse('detail', kwargs={'pk': self.id})
         return '%s%s' % (host_name, path)
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pk': self.id})
 
     class Meta:
         ordering = ['-date_time']

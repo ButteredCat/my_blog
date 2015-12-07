@@ -1,9 +1,17 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView, ArchiveIndexView
+from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps import GenericSitemap
 
 from article.models import Article
 from article import views 
+
+
+info_dict = {
+    'queryset': Article.published.all(),
+    'date_field': 'last_updated_in',
+}
 
 
 urlpatterns = [
@@ -22,5 +30,8 @@ urlpatterns = [
         views.MonthArchiveView.as_view(month_format='%m'), name='month_archive'),
     url(r'^(?P<year>[0-9]{4})/$', views.YearArchiveView.as_view(), 
         name='year_archive'),
+    url(r'^sitemap\.xml$', sitemap,
+        {'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6)}},
+        name='django.contrib.sitemaps.views.sitemap'),
 ]
 
