@@ -17,8 +17,8 @@ def month_list(request):
     counter = {}.fromkeys(year_month, 0)    # counter = {(year, month):0, ... }
     for each in articles:
         counter[(each.date_time.year, each.date_time.month)] += 1
-    year_month_counter = []
+    year_month_number = []
     for key in counter:
-        year_month_counter.append([key[0], key[1], counter[key]]) 
-    year_month_counter.sort(reverse=True)   # {[year, month, counter], ... }
-    return {'year_month_counter': year_month_counter,}
+        year_month_number.append([key[0], key[1], counter[key]]) 
+    year_month_number.sort(reverse=True)   # {[year, month, number], ... }
+    return {'year_month_number': year_month_number,}

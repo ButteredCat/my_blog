@@ -20,7 +20,7 @@
 <div class="list-group"> 
 	<strong><a class="list-group-item active">
 		<span class="glyphicon glyphicon-calendar"></span> 按月归档</a></strong>
-	{% for each in year_month_counter %}
+	{% for each in year_month_number %}
 		<div class="list-group-item">
 			<span class="badge">{{ each.2 }}</span>
 			<a href="{% url "month_archive" year=each.0 month=each.1 %}">{{ each.0 }}年{{ each.1 }}月</a>
