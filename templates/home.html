@@ -12,7 +12,7 @@
                 <h2>
 			<a href="{% url "detail" pk=post.id %}">{{ post.title }}</a>
                 </h2>
-		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date_time | date:"Y M d" }} <span class="label label-danger">{{ post.category }}</span></p>
+		<p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.date_time | date:"Y M d" }}  <span class="glyphicon glyphicon-folder-close"></span> <span class="label label-danger">{{ post.category }}</span></p>
                 <hr>
 		<p>
                    {{ post.content|custom_markdown|truncatewords_html:100  }}

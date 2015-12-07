@@ -6,7 +6,8 @@
 
 <!-- Side Widget categories -->
 <div class="list-group"> 
-	<b><a class="list-group-item active">文章分类</a></b>
+	<strong><a class="list-group-item active">
+		<span class="glyphicon glyphicon-folder-close"></span> 文章分类</a></strong>
 	{% for category in categories %}
 		<div class="list-group-item">
 			<span class="badge">{{ category.num_article }}</span>
@@ -17,7 +18,8 @@
 
 <!-- Side Widget categories -->
 <div class="list-group"> 
-	<b><a class="list-group-item active">按月归档</a></b>
+	<strong><a class="list-group-item active">
+		<span class="glyphicon glyphicon-calendar"></span> 按月归档</a></strong>
 	{% for each in year_month_counter %}
 		<div class="list-group-item">
 			<span class="badge">{{ each.2 }}</span>
@@ -27,7 +29,7 @@
 </div>
                 <!-- links -->
 		<div class="well"> 
-                    <h4>链接</h4>
+		  <h5><span class="glyphicon glyphicon-link"></span> 链接</h5>
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
