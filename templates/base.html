@@ -22,7 +22,13 @@
     <!-- Custom CSS -->
     <link href="{% static "article/css/blog-post.css" %}" rel="stylesheet">
     <link href="{% static "article/css/default.css" %}" rel="stylesheet">
-
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+    </script>
+    <script src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -109,7 +115,6 @@
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
