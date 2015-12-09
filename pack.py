@@ -2,17 +2,18 @@
 
 import os
 
-SITE_PACKAGES = 'site-packages/'
-BUNDLES = 'bundles/'
+
+VIRTUALENV = 'env'
+SITE_PACKAGES_DST = 'site-packages/'
+SITE_PACKAGES_SRC = VIRTUALENV + '/lib/python2.7/site-packages/'
 APPS = (
-        ('pagedown', 'django-pagedown/pagedown/'),
-        ('markdown2.py', 'python-markdown2/lib/markdown2.py'),
-        ('django_admin_bootstrapped',
-            'django-admin-bootstrapped/django_admin_bootstrapped/'),
-        ('solo', 'django-solo/solo/'),
+        'pagedown',
+        'markdown2.py',
+        'django_admin_bootstrapped',
+        'solo', 
+        'pygments',
        )
-APP_NAMES = [EACH_APP[0] for EACH_APP in APPS]
-LIBS = [BUNDLES + EACH_APP[1] for EACH_APP in APPS]
+LIBS = [SITE_PACKAGES_SRC + EACH_APP for EACH_APP in APPS]
 
 
 def collect_static():
@@ -21,15 +22,15 @@ def collect_static():
 def prepare():
     collect_static()
     for each in LIBS:
-        os.system('cp -r %s %s' % (each, SITE_PACKAGES))
+        os.system('cp -r %s %s' % (each, SITE_PACKAGES_DST))
 
 def package():
     os.system('tar -zcv --exclude-vcs --exclude-from .tarignore -f ../deploy.tar.gz \
                 -C %s .' % (os.getcwd()))
     
 def cleanup():
-    for each in APP_NAMES:
-        os.system('rm -rf %s' % (SITE_PACKAGES + each))
+    for each in APPS:
+        os.system('rm -rf %s' % (SITE_PACKAGES_DST + each))
 
 def main():
     prepare()
