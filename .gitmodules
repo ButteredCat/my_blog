@@ -9,4 +9,4 @@
 	url = https://github.com/trentm/python-markdown2.git
 [submodule "bundles/django-admin-bootstrapped"]
 	path = bundles/django-admin-bootstrapped
-	url = https://github.com/django-admin-bootstrapped/django-admin-bootstrapped.git
+	url = https://github.com/ButteredCat/django-admin-bootstrapped.git
