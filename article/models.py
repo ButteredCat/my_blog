@@ -25,7 +25,7 @@ class PublishManager(models.Manager):
 class Article(models.Model):
     title = models.CharField(max_length=100)
     category = models.ForeignKey(Category, null=True)
-    content = models.TextField(blank=True, null=True)
+    content = models.TextField(blank=True)
     date_time = models.DateTimeField(auto_now_add=True)
     last_updated_in = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, null=True)

@@ -6,7 +6,7 @@ from .models import Article, Category
 
 
 class ArticleForm(forms.ModelForm):
-    content = forms.CharField(widget=AdminPagedownWidget())
+    content = forms.CharField(widget=AdminPagedownWidget(), required=False)
 
     class Meta:
         model = Article 
