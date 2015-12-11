@@ -18,7 +18,8 @@ class ArticleAdmin(admin.ModelAdmin):
         'last_updated_by', 'last_updated_in',
         'is_draft'
     )
-    list_filter = ['date_time']
+    list_filter = ['date_time', 'is_draft']
+    list_per_page = 20
     list_editable = ['category', 'is_draft']
     search_fields = ['title', 'content']
     data_hierarchy = 'date_time'
