@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.views.generic.dates import MonthArchiveView, YearArchiveView
@@ -10,6 +12,10 @@ class HomeListView(generic.ListView):
     template_name = 'home.html'
     context_object_name = 'post_list'
     paginate_by = 6
+    name = u"首页"
+
+    def __unicode__(self):
+        return self.name
 
     def get_queryset(self):
         return Article.published.all()
@@ -23,6 +29,9 @@ class ArticleDetailView(generic.DetailView):
     def get_queryset(self):
         return Article.published.all()
 
+    def __unicode__(self):
+        return self.get_object().title
+
 
 class CategoryView(generic.ListView):
     template_name = 'category.html'
@@ -32,6 +41,9 @@ class CategoryView(generic.ListView):
         self.category = get_object_or_404(Category, name=self.args[0])
         return Article.published.filter(category=self.category)
 
+    def __unicode__(self):
+        return self.args[0] 
+
 
 class SearchView(generic.ListView):
     model = Article
@@ -39,12 +51,15 @@ class SearchView(generic.ListView):
     paginate_by = 20
 
     def get_queryset(self):
-        keyword = self.request.GET.get('s')
-        if keyword:
-            return Article.published.filter(Q(title__icontains=keyword)|
-                                            Q(content__icontains=keyword))
+        self.keyword = self.request.GET.get('s')
+        if self.keyword:
+            return Article.published.filter(Q(title__icontains=self.keyword)|
+                                            Q(content__icontains=self.keyword))
         else:
             return Article.published.all()
+
+    def __unicode__(self):
+        return u'搜索"%s"' % self.keyword
 
 
 class MonthArchiveView(MonthArchiveView):
@@ -55,6 +70,9 @@ class MonthArchiveView(MonthArchiveView):
     allow_future = False
     allow_empty = True
 
+    def __unicode__(self):
+        return u"按月归档" 
+
 
 class YearArchiveView(YearArchiveView):
     queryset = Article.published.all()
@@ -64,4 +82,7 @@ class YearArchiveView(YearArchiveView):
     allow_future = False
     allow_empty = True
     make_object_list = True
+
+    def __unicode__(self):
+        return u"按年归档" 
 
