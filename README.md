@@ -10,6 +10,7 @@ A django blog system deployed on Sina App Engine (SAE).
 * Code highlighting
 * [MathJax](http://duoshuo.com)
 * [duoshuo](http://duoshuo.com) comments
+* Share to SNS
 * Mobile device friendly
 * Search in site
 * Archives views
