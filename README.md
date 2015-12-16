@@ -5,6 +5,18 @@ A django blog system deployed on Sina App Engine (SAE).
 * Based on Django 1.8.
 * Inspired by [Andrew Liu](https://www.gitbook.com/book/andrew-liu/django-blog/details).
 
+## Features
+* Editing in Markdown
+* Code highlighting
+* [MathJax](http://duoshuo.com)
+* [duoshuo](http://duoshuo.com) comments
+* Mobile device friendly
+* Search in site
+* Archives views
+* Categories
+* Sitemaps
+* robots.txt
+
 ## Installation on localhost
     git clone https://github.com/ButteredCat/my_blog.git
     cd my_blog
