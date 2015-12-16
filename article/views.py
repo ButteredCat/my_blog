@@ -3,6 +3,7 @@
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.views.generic.dates import MonthArchiveView, YearArchiveView
+from django.views.generic import TemplateView, ArchiveIndexView
 from django.db.models import Q
 
 from .models import Article, Category
@@ -42,7 +43,7 @@ class CategoryView(generic.ListView):
         return Article.published.filter(category=self.category)
 
     def __unicode__(self):
-        return self.args[0] 
+        return u'分类："%s"' % self.args[0] 
 
 
 class SearchView(generic.ListView):
@@ -85,4 +86,22 @@ class YearArchiveView(YearArchiveView):
 
     def __unicode__(self):
         return u"按年归档" 
+
+
+class AboutView(TemplateView):
+    template_name = "about.html"
+
+    def __unicode__(self):
+        return u"关于"
+
+
+class AllArchiveView(ArchiveIndexView):
+    models = Article
+    date_field = "date_time"
+    queryset = Article.published.all()
+    template_name = "archives.html"
+    context_object_name = "archives"
+
+    def __unicode__(self):
+        return u"归档"
 
