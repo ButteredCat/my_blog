@@ -13,7 +13,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ view }} | {{ site_info.name }}</title>
+    <title>
+	    {% if view %}{{ view }} | {% endif %}
+	    {{ site_info.name }}
+    </title>
 
     <link rel="shortcut icon" href="http://imgsize.ph.126.net/?imgurl=http://img0.ph.126.net/Odok4yuZBkn-7fh45MREpw==/6631438301118338403.jpg_16x16x0x90.jpg">
 
