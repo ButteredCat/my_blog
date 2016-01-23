@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
@@ -32,4 +33,6 @@ urlpatterns = [
         {'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6)}},
         name='django.contrib.sitemaps.views.sitemap'),
 ]
+
+admin.site.site_header = u'网站管理'
 
