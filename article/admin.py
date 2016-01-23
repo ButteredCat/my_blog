@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from django.contrib import admin
 
 from .forms import ArticleForm
@@ -6,16 +7,21 @@ from .models import Article, Category
 # Register your models here.
 class ArticleAdmin(admin.ModelAdmin):
     form = ArticleForm
+    readonly_fields = ['author', 'date_time', 'last_updated_in',
+            'last_updated_by',]
     fieldsets = [
-        (None, {'fields': ['title']}),
-        (None, {'fields': ['category']}),
-        (None, {'fields': ['content']}),
-        (None, {'fields': ['is_draft']}),
+        (u'标题与分类', {'fields': ['title', 'category']}),
+        (u'发布', {
+            'fields': ['author', 'date_time', 'last_updated_by',
+                'last_updated_in', 'is_draft'], 
+            'classes': ['collapse']
+            }
+        ),
+        (u'正文', {'fields': ['content']}),
     ]
     list_display = (
         'title', 'category', 
-        'author', 'date_time',
-        'last_updated_by', 'last_updated_in',
+        'author', 'date_time', 
         'is_draft'
     )
     list_filter = ['date_time', 'is_draft']

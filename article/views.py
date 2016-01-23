@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.views.generic.dates import MonthArchiveView, YearArchiveView
